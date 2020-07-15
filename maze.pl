@@ -1,0 +1,29 @@
+%Describing the maze.....Rows and cols respectively...unnecessary for now....
+maze(3,3).
+
+%Saying where the blocks are there.....
+block(1,1).
+
+
+%Finding path between startX,Y and EndX,Y.....
+%Visited and path are the third and 4th attributes.....
+%Base Case...
+findPath(Sx,Sy,Sx,Sy,Visited,Visited).
+
+%recursion Case for top...
+findPath(Sx,Sy,Ex,Ey,Visited,Path):-
+    Sx >0, NewSx is Sx-1,\+block(NewSx,Sy),\+member([NewSx,Sy],Visited),findPath(NewSx,Sy,Ex,Ey,[[NewSx,Sy]|Visited],Path).
+
+%recursion Case for bottom...
+findPath(Sx,Sy,Ex,Ey,Visited,Path):-
+    Sx <2, NewSx is Sx+1,\+block(NewSx,Sy),\+member([NewSx,Sy],Visited),findPath(NewSx,Sy,Ex,Ey,[[NewSx,Sy]|Visited],Path).
+
+%recursion Case for left...
+findPath(Sx,Sy,Ex,Ey,Visited,Path):-
+    Sy >0, NewSy is Sy-1,\+block(Sx,NewSy),\+member([Sx,NewSy],Visited),findPath(Sx,NewSy,Ex,Ey,[[Sx,NewSy]|Visited],Path).
+
+
+%recursion Case for right...
+findPath(Sx,Sy,Ex,Ey,Visited,Path):-
+    Sy < 2, NewSy is Sy+1,\+block(Sx,NewSy),\+member([Sx,NewSy],Visited),findPath(Sx,NewSy,Ex,Ey,[[Sx,NewSy]|Visited],Path).
+

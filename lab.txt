@@ -1,0 +1,1 @@
+employee(suhas,cse,200).

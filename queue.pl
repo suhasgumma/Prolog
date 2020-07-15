@@ -1,0 +1,13 @@
+%Adding in the begining and deleting from the end....
+
+%enqueue first arg is List ....second arg is the element to be added.... third arg is resulting list...
+enqueue(List,Element,[Element|List]).
+
+%append to use inside dequeue....
+append(H,L,[H|L]).
+
+%dequeue first arg is the list from which the element should be popped.... second arg is the list after the popping is done....third arg is the popped element...
+dequeue([],[],'null').
+dequeue([H|[]],[],H):-!.
+dequeue([H|T],L,A):- dequeue(T,L1,A), append(H,L1,L).
+
