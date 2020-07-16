@@ -1,2 +1,0 @@
-employee(suhas,cse,200).
-employee(poorna,ece,200).
